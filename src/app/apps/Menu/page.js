@@ -1,21 +1,56 @@
-{/*Este es el menu principal*/}
-import { Plus, Pencil, Trash2, Search, Package, FileText } from "lucide-react";
-
+{
+  /*Este es el menu principal*/
+}
+import {
+  ArchiveRestore,
+  Blocks,
+  Boxes,
+  FileText,
+  ArrowRightLeft,
+  ArrowLeftToLine,
+  Plus,
+} from "lucide-react";
 
 export default function Menu() {
   const buttons = [
-    { text: "Agregar", icon: <Plus className="w-6 h-6" /> },
-    { text: "Editar", icon: <Pencil className="w-6 h-6" /> },
-    { text: "Eliminar", icon: <Trash2 className="w-6 h-6" /> },
-    { text: "Buscar", icon: <Search className="w-6 h-6" /> },
-    { text: "Stock", icon: <Package className="w-6 h-6" /> },
-    { text: "Reportes", icon: <FileText className="w-6 h-6" /> },
+    {
+      text: "Apertura y Cierre",
+      number: 1,
+      icon: <ArchiveRestore className="w-12 h-12 text-white" />,
+    },
+    {
+      text: "Productos",
+      number: 883,
+      icon: <Blocks className="w-12 h-12 text-white" />,
+    },
+    {
+      text: "Compras",
+      number: 0,
+      icon: <Boxes className="w-12 h-12 text-white" />,
+    },
+    {
+      text: "Ventas",
+      number: 27,
+      icon: <FileText className="w-12 h-12 text-white" />,
+    },
+    {
+      text: "Transferencias y Salidas",
+      number: 0,
+      icon: <ArrowRightLeft className="w-12 h-12 text-white" />,
+    },
+    {
+      text: "Entradas",
+      number: 0,
+      icon: <ArrowLeftToLine className="w-12 h-12 text-white" />,
+    },
   ];
 
   const products = Array.from({ length: 50 }, (_, i) => ({
     code: `00${i + 1}`,
     name: `Producto ${i + 1}`,
-    category: ["Analgésico", "Antibiótico", "Vitaminas", "Antiinflamatorio"][i % 4],
+    category: ["Analgésico", "Antibiótico", "Vitaminas", "Antiinflamatorio"][
+      i % 4
+    ],
     format: "Tabletas 500mg",
     stock: Math.floor(Math.random() * 100),
     minStock: 10,
@@ -30,24 +65,51 @@ export default function Menu() {
       {/* Sección Superior */}
       <div className="flex space-x-4">
         {/* Botones grandes con iconos */}
-        <div className="grid grid-cols-3 gap-4 flex-1">
+        <div className="grid grid-cols-3 gap-4 flex-auto max-w-[45%] min-w-[1000px]">
           {buttons.map((btn, index) => (
             <button
               key={index}
-              className="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 rounded-lg shadow-md transition w-full"
+              className="flex flex-col items-center justify-between bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-md transition w-full h-32"
             >
-              {btn.icon}
-              {btn.text}
+              {/* Icono a la izquierda */}
+              <div className="flex items-center w-full h-full ">
+                <div className="bg-white bg-opacity-20 p-4 pr-6 h-full place-content-center " style={{borderRadius:"0px 50px 50px 0px"}}>
+                  <div className="">{btn.icon}</div>
+                </div>
+
+                <div className="pl-2">
+                  {/* Número + Texto */}
+                  <div className="text-left">
+                    <p className="text-sm">{btn.text}</p>
+                    <span className="text-2xl font-bold">{btn.number}</span>
+                  </div>
+
+                  {/* Pequeño icono de más */}
+                  <div className="flex items-center text-sm">
+                    <Plus className="w-4 h-4 mr-1" /> Más opciones
+                  </div>
+                </div>
+              </div>
             </button>
           ))}
         </div>
 
         {/* Lista de categorías */}
         <div className="w-1/4 bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-lg font-semibold text-gray-700 mb-2">Categorías</h2>
+          <h2 className="text-lg font-semibold text-gray-700 mb-2">
+            Categorías
+          </h2>
           <ul className="space-y-2">
-            {["Analgésicos", "Antibióticos", "Vitaminas", "Antiinflamatorios"].map((category, index) => (
-              <li key={index} className="p-2 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer">
+            {[
+              "Analgésicos",
+              "Antibióticos",
+              "Vitaminas",
+              "Antiinflamatorios",
+            ].map((category, index) => (
+              <li
+                key={index}
+                className="p-2 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer"
+              >
                 {category}
               </li>
             ))}
@@ -57,7 +119,9 @@ export default function Menu() {
 
       {/* Tabla de productos con scroll */}
       <div className="mt-6 bg-white shadow-md rounded-lg p-4">
-        <h2 className="text-lg font-semibold text-gray-700 mb-2">Inventario de Productos</h2>
+        <h2 className="text-lg font-semibold text-gray-700 mb-2">
+          Inventario de Productos
+        </h2>
         <div className="overflow-y-auto max-h-96 border rounded-lg">
           <table className="w-full border-collapse border border-gray-300">
             <thead className="bg-blue-500 text-white sticky top-0">
@@ -77,7 +141,10 @@ export default function Menu() {
             </thead>
             <tbody>
               {products.map((product, index) => (
-                <tr key={index} className="text-center border bg-gray-100 even:bg-gray-200">
+                <tr
+                  key={index}
+                  className="text-center border bg-gray-100 even:bg-gray-200"
+                >
                   <td className="p-2 border">{product.code}</td>
                   <td className="p-2 border">{product.name}</td>
                   <td className="p-2 border">{product.category}</td>
@@ -88,7 +155,9 @@ export default function Menu() {
                   <td className="p-2 border">{product.expiration}</td>
                   <td className="p-2 border">{product.supplier}</td>
                   <td className="p-2 border">{product.unitPrice}</td>
-                  <td className="p-2 border font-semibold">{(product.stock * product.unitPrice).toFixed(2)}</td>
+                  <td className="p-2 border font-semibold">
+                    {(product.stock * product.unitPrice).toFixed(2)}
+                  </td>
                 </tr>
               ))}
             </tbody>
