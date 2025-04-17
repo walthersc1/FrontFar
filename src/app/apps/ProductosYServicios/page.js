@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 
 
@@ -12,7 +13,8 @@ export default function ProductosYServicios() {
         {/* Botones superiores */}
         <div className="flex gap-4 mb-4">
           <button className="bg-green-500 text-white px-4 py-2 rounded-md">
-            + Agregar Productos
+            
+            <Link href={"/apps/ProductoNuevo"}>+ Agregar Productos</Link>
           </button>
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
             + Agregar Servicios

@@ -1,6 +1,5 @@
-{
-  /*Este es el menu principal*/
-}
+'use client'
+import { useEffect, useState } from "react";
 import {
   ArchiveRestore,
   Blocks,
@@ -45,20 +44,23 @@ export default function Menu() {
     },
   ];
 
-  const products = Array.from({ length: 50 }, (_, i) => ({
-    code: `00${i + 1}`,
-    name: `Producto ${i + 1}`,
-    category: ["Analgésico", "Antibiótico", "Vitaminas", "Antiinflamatorio"][
-      i % 4
-    ],
-    format: "Tabletas 500mg",
-    stock: Math.floor(Math.random() * 100),
-    minStock: 10,
-    unit: "Cajas",
-    expiration: "2025-08-12",
-    supplier: "Lab. Genfar",
-    unitPrice: (Math.random() * 20).toFixed(2),
-  }));
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const generated = Array.from({ length: 50 }, (_, i) => ({
+      code: `00${i + 1}`,
+      name: `Producto ${i + 1}`,
+      category: ["Analgésico", "Antibiótico", "Vitaminas", "Antiinflamatorio"][i % 4],
+      format: "Tabletas 500mg",
+      stock: Math.floor(Math.random() * 100),
+      minStock: 10,
+      unit: "Cajas",
+      expiration: "2025-08-12",
+      supplier: "Lab. Genfar",
+      unitPrice: (Math.random() * 20).toFixed(2),
+    }));
+    setProducts(generated);
+  }, []);
 
   return (
     <div className="min-h-screen p-6 bg-gray-100">
@@ -123,7 +125,7 @@ export default function Menu() {
           Inventario de Productos
         </h2>
         <div className="overflow-y-auto max-h-96 border rounded-lg">
-          <table className="w-full border-collapse border border-gray-300">
+          {<table className="w-full border-collapse border border-gray-300">
             <thead className="bg-blue-500 text-white sticky top-0">
               <tr>
                 <th className="p-3 border">Código</th>
@@ -161,7 +163,7 @@ export default function Menu() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table>}
         </div>
       </div>
     </div>

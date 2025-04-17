@@ -1,42 +1,72 @@
 "use client";
-
+import {  
+  ChevronFirst,
+  CircleUserRound,
+  MoreVertical,
+  ChevronLast,
+} from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
-import { FiMenu } from "react-icons/fi";
+import { Tooltip } from "@nextui-org/react";
+import { usePathname } from 'next/navigation';
+import { useSidebar } from './SidebarContext'; 
 
-export default function Navebar() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Navebar({ children }) {
+  const { isOpen, setIsOpen } = useSidebar();
 
   return (
-    <div className="flex h-screen">
-      {/* Menú lateral que empuja el contenido */}
-      <div
-        className={`bg-blue-900 text-white p-5 transition-all ${
-          isOpen ? "w-64" : "w-16"
-        }`}
-      >
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-white text-lg mb-4"
-        >
-          {isOpen ? "✖ Cerrar" : <FiMenu size={24} />}
-        </button>
+    <aside className="min-h-screen text-white">
+      <nav className="h-full flex flex-col bg-blue-900 border-r shadow-sm fixed md:relative z-50">
+        <div className="p-4 flex justify-between items-center">
+          <img
+            src="/next.svg"
+            className={`overflow-hidden transition-all ${isOpen ? "w-32" : "w-0"}`}
+            alt="logo"
+          />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 rounded-lg bg-gray-50 hover:bg-gray-100 text-black"
+          >
+            {isOpen ? <ChevronFirst /> : <ChevronLast />}
+          </button>
+        </div>
 
-        {isOpen && (
-          <ul>
-            <li className="mb-3 hover:bg-blue-700 p-2 rounded">
-              <Link href={"/apps/Menu"}>Inicio</Link>
-            </li>
-            <li className="mb-3 hover:bg-blue-700 p-2 rounded">
-              <Link href={"/apps/ProductosYServicios"}>Stock</Link>
-            </li>
-            <li className="mb-3 hover:bg-blue-700 p-2 rounded">
-              <Link href={"/apps/Ventas"}>Ventas</Link>
-            </li>
-            <li className="mb-3 hover:bg-blue-700 p-2 rounded">Reportes</li>
-          </ul>
-        )}
-      </div>
-    </div>
+        <ul className="px-3">{children}</ul>
+
+        
+      </nav>
+    </aside>
+  );
+};
+
+
+
+export function NavebarItem({ icon, text, href }) {
+  const { isOpen } = useSidebar();
+  const pathname = usePathname();
+
+  const isActive = pathname === href;
+
+  return (
+    <li className="my-1">
+      <Link
+        href={href}
+        className={`relative flex items-center py-3 px-3 font-medium rounded-md cursor-pointer transition-colors group w-full
+          ${
+            isActive
+              ? "bg-gradient-to-tr from-white to-blue-200 text-blue-900"
+              : "hover:bg-indigo-50 hover:text-blue-900"
+          }
+        `}
+      >
+        {icon}
+        <span
+          className={`overflow-hidden transition-all ${
+            isOpen ? "w-52 ml-3" : "w-0"
+          }`}
+        >
+          {text}
+        </span>
+      </Link>
+    </li>
   );
 }
