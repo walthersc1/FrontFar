@@ -12,36 +12,12 @@ import {
 
 export default function Menu() {
   const buttons = [
-    {
-      text: "Apertura y Cierre",
-      number: 1,
-      icon: <ArchiveRestore className="w-12 h-12 text-white" />,
-    },
-    {
-      text: "Productos",
-      number: 883,
-      icon: <Blocks className="w-12 h-12 text-white" />,
-    },
-    {
-      text: "Compras",
-      number: 0,
-      icon: <Boxes className="w-12 h-12 text-white" />,
-    },
-    {
-      text: "Ventas",
-      number: 27,
-      icon: <FileText className="w-12 h-12 text-white" />,
-    },
-    {
-      text: "Transferencias y Salidas",
-      number: 0,
-      icon: <ArrowRightLeft className="w-12 h-12 text-white" />,
-    },
-    {
-      text: "Entradas",
-      number: 0,
-      icon: <ArrowLeftToLine className="w-12 h-12 text-white" />,
-    },
+    { text: "Apertura y Cierre", number: 1, icon: <ArchiveRestore className="w-12 h-12 text-white" /> },
+    { text: "Productos", number: 883, icon: <Blocks className="w-12 h-12 text-white" />},
+    { text: "Compras", number: 0, icon: <Boxes className="w-12 h-12 text-white" />},
+    { text: "Ventas", number: 27,icon: <FileText className="w-12 h-12 text-white" />},
+    { text: "Transferencias y Salidas", number: 0, icon: <ArrowRightLeft className="w-12 h-12 text-white" />},
+    { text: "Entradas", number: 0, icon: <ArrowLeftToLine className="w-12 h-12 text-white" />},
   ];
 
   const [products, setProducts] = useState([]);
@@ -65,9 +41,10 @@ export default function Menu() {
   return (
     <div className="min-h-screen p-6 bg-gray-100">
       {/* Sección Superior */}
-      <div className="flex space-x-4">
+      <h1 className="text-lg font-semibold text-gray-700 mb-2">DAHSBOARD</h1>
+      <div className="flex flex-col lg:flex-row gap-4">
         {/* Botones grandes con iconos */}
-        <div className="grid grid-cols-3 gap-4 flex-auto max-w-[45%] min-w-[1000px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 flex-auto max-w-screen">
           {buttons.map((btn, index) => (
             <button
               key={index}
@@ -97,10 +74,8 @@ export default function Menu() {
         </div>
 
         {/* Lista de categorías */}
-        <div className="w-1/4 bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-lg font-semibold text-gray-700 mb-2">
-            Categorías
-          </h2>
+        <div className="w-full lg:w-1/4 bg-white shadow-md rounded-lg p-4">
+          <h2 className="text-lg font-semibold text-gray-700 mb-2">Categorías</h2>
           <ul className="space-y-2">
             {[
               "Analgésicos",
@@ -124,7 +99,7 @@ export default function Menu() {
         <h2 className="text-lg font-semibold text-gray-700 mb-2">
           Inventario de Productos
         </h2>
-        <div className="overflow-y-auto max-h-96 border rounded-lg">
+        <div className="overflow-x-auto max-h-96 border rounded-lg">
           {<table className="w-full border-collapse border border-gray-300">
             <thead className="bg-blue-500 text-white sticky top-0">
               <tr>

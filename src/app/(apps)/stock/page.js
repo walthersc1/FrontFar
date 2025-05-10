@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
-
-
+import {  
+  FileText,  
+} from "lucide-react";
 
 export default function ProductosYServicios() {
     return (
@@ -14,7 +15,7 @@ export default function ProductosYServicios() {
         <div className="flex gap-4 mb-4">
           <button className="bg-green-500 text-white px-4 py-2 rounded-md">
             
-            <Link href={"/apps/ProductoNuevo"}>+ Agregar Productos</Link>
+            <Link href={"/ProductoNuevo"}>+ Agregar Productos</Link>
           </button>
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
             + Agregar Servicios
@@ -44,12 +45,15 @@ export default function ProductosYServicios() {
           />
           <button className="bg-gray-500 text-white px-4 py-2 rounded-md">Buscar</button>
         </div>
+        <div>
+          <button className="bg-gray-500 text-white p-4 py-2 mb-4 rounded-md">Exportar</button>
+        </div>
   
         {/* Tabla de productos */}
         <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse border">
+          <table className="min-w-full border-collapse border bg-white">
             <thead>
-              <tr className="bg-gray-200">
+              <tr className="bg-blue-500 text-white">
                 <th className="border p-2">Código Barra</th>
                 <th className="border p-2">Nombre del Producto</th>
                 <th className="border p-2">U/M</th>
@@ -73,8 +77,9 @@ export default function ProductosYServicios() {
                 <td className="border p-2">96</td>
                 <td className="border p-2">SOUTHERN</td>
                 <td className="border p-2 flex gap-2">
-                  <button className="bg-blue-500 text-white px-2 py-1 rounded">🔍</button>
-                  <button className="bg-yellow-500 text-white px-2 py-1 rounded">✏️</button>
+                  <button className="bg-blue-500 text-white px-2 py-1 rounded"><FileText className="w-6 h-6 text-white" /></button>
+                  <button className="bg-yellow-500 text-white px-2 py-1 rounded">
+                  <Link href={"/ProductoNuevo"}>✏️</Link></button>
                   <button className="bg-red-500 text-white px-2 py-1 rounded">❌</button>
                 </td>
               </tr>

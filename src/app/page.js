@@ -1,11 +1,5 @@
-import Image from "next/image";
-import Menu from "./apps/Menu/page";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <div>
-     
-      <Menu />
-    </div>
-  );
+  redirect('/login');
 }

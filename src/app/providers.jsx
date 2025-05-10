@@ -1,15 +1,13 @@
-// src/app/providers.jsx
-'use client';
+// app/providers.tsx
+'use client'
 
-import { NextUIProvider } from '@nextui-org/react';
-import { SidebarProvider } from './componentes/SidebarContext'; // Asegúrate de que esta ruta es correcta
+import {NextUIProvider} from '@nextui-org/react'
 
-export function Providers({ children }) {
-  return (
-    <NextUIProvider>
-      <SidebarProvider>
+
+export function Providers({children}) {
+    return (
+      <NextUIProvider>
         {children}
-      </SidebarProvider>
-    </NextUIProvider>
-  );
-}
+      </NextUIProvider>
+    )
+  }
