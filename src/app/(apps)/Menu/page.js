@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   ArchiveRestore,
@@ -12,12 +13,12 @@ import {
 
 export default function Menu() {
   const buttons = [
-    { text: "Apertura y Cierre", number: 1, icon: <ArchiveRestore className="w-12 h-12 text-white" /> },
-    { text: "Productos", number: 883, icon: <Blocks className="w-12 h-12 text-white" />},
-    { text: "Compras", number: 0, icon: <Boxes className="w-12 h-12 text-white" />},
-    { text: "Ventas", number: 27,icon: <FileText className="w-12 h-12 text-white" />},
-    { text: "Transferencias y Salidas", number: 0, icon: <ArrowRightLeft className="w-12 h-12 text-white" />},
-    { text: "Entradas", number: 0, icon: <ArrowLeftToLine className="w-12 h-12 text-white" />},
+    { text: "Apertura y Cierre", number: 1, icon: <ArchiveRestore className="w-12 h-12 text-white" />, referencia:"/" },
+    { text: "Productos", number: 883, icon: <Blocks className="w-12 h-12 text-white" />, referencia:"/stock"},
+    { text: "Compras", number: 0, icon: <Boxes className="w-12 h-12 text-white" />, referencia:"/"},
+    { text: "Ventas", number: 27,icon: <FileText className="w-12 h-12 text-white" />, referencia:"/ventas"},
+    { text: "Transferencias y Salidas", number: 0, icon: <ArrowRightLeft className="w-12 h-12 text-white" />, referencia:"/"},
+    { text: "Entradas", number: 0, icon: <ArrowLeftToLine className="w-12 h-12 text-white" />, referencia:"/"},
   ];
 
   const [products, setProducts] = useState([]);
@@ -46,8 +47,9 @@ export default function Menu() {
         {/* Botones grandes con iconos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 flex-auto max-w-screen">
           {buttons.map((btn, index) => (
+            <Link key={index} href={btn.referencia} passHref>
             <button
-              key={index}
+                           
               className="flex flex-col items-center justify-between bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-md transition w-full h-32"
             >
               {/* Icono a la izquierda */}
@@ -70,6 +72,7 @@ export default function Menu() {
                 </div>
               </div>
             </button>
+            </Link>
           ))}
         </div>
 

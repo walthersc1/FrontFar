@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { NavItems } from './navItems';
 import Link from 'next/link';
-import { Tooltip } from '@nextui-org/react';
+import { Tooltip } from "@heroui/react";
 
 export default function SideNav() {
   const navItems = NavItems();

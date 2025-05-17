@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 
 import Link from 'next/link';
 
-import { Avatar, Drawer } from '@nextui-org/react';
-import { Button } from '@nextui-org/react';
+import { Avatar, Drawer } from "@heroui/react";
+import { Button } from "@heroui/react";
 import {
     Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem
-} from '@nextui-org/dropdown';
+} from "@heroui/dropdown";
 import { NavItems } from './navItems';
 import { Menu } from 'lucide-react';
 

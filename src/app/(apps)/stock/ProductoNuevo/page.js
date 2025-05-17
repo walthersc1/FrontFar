@@ -1,13 +1,24 @@
 "use client"
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@heroui/react";
 import React , {useState} from "react";
 import Link from "next/link";
+import ModalProducto from "@/app/componentes/ModalProducto";
 
 export default function ProductoNuevo (){
-
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const[selectedOption, setSelecttedOption] = useState("Exonerada");
     const handleOptionChange = (evenet) => {setSelecttedOption(event.target.value);};
     const list1 = ["Exonerada", "Gravada","Inafecto"]
     const [checked1, setChecked1] = useState(false);
+    const [lote1,setLote1] = useState(false);
     const [comision1, setComision1] = useState("");
     const [habilitarCaja, setHabilitarCaja] = useState(false);
     const [habilitarUnitaria, setHabilitarUnitaria] = useState(false);
@@ -29,7 +40,11 @@ export default function ProductoNuevo (){
                 </div>
                 <div className="col-span-3 text-center p-1">
                     <p className="text-left">P. Activo(*):</p>
-                    <input className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    <div className="flex">
+                        <ModalProducto nombre="P. Activo(*)"></ModalProducto>
+                        <input className="rounded-r-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                        
+                    </div>
                 </div>
                 <div className="col-span-3 text-center p-1">
                     <p className="text-left">C. Digemid(*):</p>
@@ -37,7 +52,10 @@ export default function ProductoNuevo (){
                 </div>
                 <div className="col-span-3 text-center p-1">
                     <p className="text-left">Patología(*):</p>
-                    <input className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    <div className="flex">
+                        <ModalProducto nombre="Patología(*):"></ModalProducto>
+                        <input className="rounded-r-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    </div>
                 </div>
                 <div className="col-span-3 text-center p-1">
                     <p className="text-left">R.Sanitario(*):</p>
@@ -45,7 +63,7 @@ export default function ProductoNuevo (){
                 </div>
                 <div className="col-span-6 flex flex-wrap flex-row justify-between px-3 py-2">
                     <div className="basis 1/3 text-center p-1 align-center">
-                        <input type="checkbox" id="check-lote"></input>
+                        <input type="checkbox" id="check-lote" checked={lote1} onChange={(e)=> setLote1(e.target.checked)}></input>
                         <label className="p-2">Lote</label> 
                     </div>
                     <div className="basis 1/3 text-center p-1">
@@ -70,10 +88,51 @@ export default function ProductoNuevo (){
                         ))
                     }                    
                 </div> 
-                <div className="col-span-3 text-center p-1">
+                 {lote1 &&
+                <div className="col-span-6">
+                    <button className="rounded bg-blue-900 my-4 p-2 font-bold text-white">+ Agregar Lote</button>
+                    <table className="w-full border-collapse border bg-white">
+                    <thead>
+                    <tr className="bg-blue-900 text-white">
+                        <th className="border p-2">Item</th>
+                        <th className="border p-2">Lote</th>
+                        <th className="border p-2">Fecha Caducidad</th>
+                        <th className="border p-2">Stock</th>
+                        <th className="border p-2">Cost. U</th>
+                        <th className="border p-2">Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody className="place-items-center">
+                    {/* Datos de ejemplo */}
+                    <tr>
+                        <td className="border p-2">1</td>
+                        <td className="border p-2">
+                            <input className="rounded-md bg-gray-50 p-1 border-2 w-full border-gray-700"></input>
+                        </td>
+                        <td className="border p-2">
+                            <input className="rounded-md bg-gray-50 p-1 border-2 w-full border-gray-700" type="date"></input>
+                        </td>
+                        <td className="border p-2">
+                            <input className="rounded-md bg-gray-50 p-1 border-2 w-20 border-gray-700"></input>
+                        </td>
+                        <td className="border p-2">
+                            <input className="rounded-md bg-gray-50 p-1 border-2 w-20 border-gray-700"></input>
+                        </td>
+                        <td className="border p-2 flex gap-2">
+                            <button className="bg-red-500 text-white px-2 py-1 rounded">❌</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                </div>
+
+                }
+                
+                {!lote1 && <div className="col-span-3 text-center p-1">
                     <p className="text-left">Fecha de Caducidad(*):</p>
                     <input placeholder="Ingresar fecha" type="date" className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
-                </div>
+                </div>}
                 <div className="col-span-3 text-center p-1">
                     <div className="flex flex-wrap">
                         <input type="checkbox" id="check-lote" checked={checked1} onChange={(e)=> setChecked1(e.target.checked)} ></input>
@@ -93,15 +152,24 @@ export default function ProductoNuevo (){
                 </div>
                 <div className="col-span-3 text-center p-1">
                     <p className="text-left">Laboratorio(*):</p>
-                    <input className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    <div className="flex">
+                        <ModalProducto nombre="Laboratorio(*):"></ModalProducto>
+                        <input className="rounded-r-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    </div>
                 </div>
                 <div className="col-span-3 text-center p-1">
                     <p className="text-left">Categoría(*):</p>
-                    <input className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    <div className="flex">
+                        <ModalProducto nombre="Categoría(*):"></ModalProducto>
+                        <input className="rounded-r-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    </div>
                 </div> 
                 <div className="col-span-3 text-center p-1">
                     <p className="text-left">Ubicación(*):</p>
-                    <input className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    <div className="flex">
+                        <ModalProducto nombre="Ubicación(*):"></ModalProducto>
+                        <input className="rounded-r-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+                    </div>
                 </div>
                 <div className="col-span-6 text-center p-1">
                     <p className="text-left">¿Para qué sirve?:</p>                    
@@ -111,12 +179,7 @@ export default function ProductoNuevo (){
                         <input type="checkbox" id="check-lote"></input>
                         <label className="p-2">Sede 1</label> 
                 </div>
-                <div className="col-span-6 p-2 px-8">
-                    <div className="flex flex-wrap flex-col">
-                        <label className="py-2">Subir foto</label> 
-                        <input type="file" id="check-lote"></input>
-                    </div>
-                </div>
+                
             </div>            
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-2 place-self-start w-full m-2" >
                 <div className="col-span-6 border-4 border-t border-blue-900" />
@@ -231,8 +294,12 @@ export default function ProductoNuevo (){
 
                 <div className="col-span-6">
                     <div className="grid grid-cols-6 p-2">
-                        <button className="rounded-xl font-bold bg-green-400 p-2">Agregar</button>
-                        <button className="col-start-6 rounded-xl font-bold bg-red-400 p-2">Cancelar</button>
+                        <button className="rounded-xl font-bold bg-green-400 p-2">
+                            <Link href={"/stock"}>Agregar</Link>
+                        </button>
+                        <button className="col-start-6 rounded-xl font-bold bg-red-400 p-2">
+                            <Link href={"/stock"}>Cancelar</Link>
+                        </button>
                     </div>
                 </div>
                 
