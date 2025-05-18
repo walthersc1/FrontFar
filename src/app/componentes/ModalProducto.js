@@ -21,11 +21,11 @@ export default function ModalProducto({nombre}) {
                 <ModalHeader className="flex flex-col gap-1">{nombre}</ModalHeader>
                 <ModalBody>
                     <div className="col-span-6 text-center p-1">
-                        <p className="text-left">Nombre de la:</p>
+                        <p className="text-left">Nombre {nombre}</p>
                         <input placeholder="Ingresar código" className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
                     </div>
                     <div className="col-span-6 text-center p-1">
-                        <p className="text-left">Nombre del Producto(*):</p>
+                        <p className="text-left">Descripción {nombre}:</p>
                         <input placeholder="Ingresar nombre" className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
                     </div>                                   
                 </ModalBody>

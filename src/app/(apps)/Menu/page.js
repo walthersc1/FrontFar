@@ -13,7 +13,7 @@ import {
 
 export default function Menu() {
   const buttons = [
-    { text: "Apertura y Cierre", number: 1, icon: <ArchiveRestore className="w-12 h-12 text-white" />, referencia:"/" },
+    { text: "Apertura y Cierre", number: 1, icon: <ArchiveRestore className="w-12 h-12 text-white" />, referencia:"/caja" },
     { text: "Productos", number: 883, icon: <Blocks className="w-12 h-12 text-white" />, referencia:"/stock"},
     { text: "Compras", number: 0, icon: <Boxes className="w-12 h-12 text-white" />, referencia:"/"},
     { text: "Ventas", number: 27,icon: <FileText className="w-12 h-12 text-white" />, referencia:"/ventas"},

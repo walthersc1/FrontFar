@@ -25,6 +25,8 @@ export default function VentasNuevo() {
           <label className="block font-bold">Comprobante:</label>
           <select className="rounded-md bg-gray-50 p-3 border-2 w-full border-gray-700">
             <option>TICKET</option>
+            <option>BOLETA</option>
+            <option>FACTURA</option>
           </select>
         </div>
         <div className='col-span-1'>
@@ -79,7 +81,7 @@ export default function VentasNuevo() {
         </div>
         <div className='col-span-1 col-start-1'>
           <label className="block font-bold">Fecha de Venta:</label>
-          <input className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+          <input disabled className="rounded-md bg-gray-100 p-2 border-2 w-full border-gray-700"></input>
         </div>
         <div className='col-span-1'>
           <label className="block font-bold">Items:</label>
@@ -87,11 +89,15 @@ export default function VentasNuevo() {
         </div>
         <div className='col-span-1'>
           <label className="block font-bold">Moneda:</label>
-          <input className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+          <select className="rounded-md bg-gray-50 p-3 border-2 w-full border-gray-700">
+            <option>S/. SOLES</option>
+            <option>$ DOLAR</option>
+            <option>EUROS</option>
+          </select>
         </div>
         <div className='col-span-1'>
           <label className="block font-bold">Tipo Cambio:</label>
-          <input className="rounded-md bg-gray-50 p-2 border-2 w-full border-gray-700"></input>
+          <input disabled className="rounded-md bg-gray-100 p-2 border-2 w-full border-gray-700"></input>
         </div>
         <div className='col-span-1'>
           <label className="block font-bold">Evento: 0% Dscto</label>
@@ -156,15 +162,15 @@ export default function VentasNuevo() {
         <div className='grid grid-cols-5'>
           <div className='col-span-1'>
             <button disabled={true} className='border font-bold p-2 bg-gray-100 border-gray-400 rounded-l-md'> Subtotal</button>
-            <input className="rounded-r-md bg-gray-200 p-2 border-2 border-gray-700"></input>
+            <input disabled className="rounded-r-md bg-gray-200 p-2 border-2 border-gray-700"></input>
           </div>
           <div className='col-span-1'>
             <button disabled={true} className='border font-bold p-2 bg-gray-100 border-gray-400 rounded-l-md'> Dscto:</button>
-            <input className="rounded-r-md bg-gray-200 p-2 border-2 border-gray-700"></input>
+            <input disabled className="rounded-r-md bg-gray-200 p-2 border-2 border-gray-700"></input>
           </div>
           <div className='col-span-1'>
             <button disabled={true} className='border font-bold p-2 bg-gray-100 border-gray-400 rounded-l-md'> Total:</button>
-            <input className="rounded-r-md bg-gray-200 p-2 border-2 border-gray-700"></input>
+            <input disabled className="rounded-r-md bg-gray-200 p-2 border-2 border-gray-700"></input>
           </div>
 
         </div>

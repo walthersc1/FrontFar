@@ -48,14 +48,15 @@ function TablaProductos({ tituloNombre }) {
   return (
     <>
       <div className="flex items-center gap-4 mb-4">
-        <select className="border p-2 rounded">
+        <h2>Registros</h2>
+        <select className="border p-2 rounded-md">
           <option value="50">50</option>
           <option value="100">100</option>
         </select>
         <input
           type="text"
           placeholder={`Digite el ${tituloNombre}`}
-          className="border p-2 rounded w-1/3"
+          className="border p-2 ml-16 rounded w-1/3"
         />
         <button className="bg-gray-500 text-white px-4 py-2 rounded-md">Buscar</button>
       </div>
