@@ -112,15 +112,18 @@ export default function Caja() {
     
             {/* Botones superiores */}
             <div className="flex gap-8 mb-4">
-              <button className="bg-green-500 text-white px-4 py-2 rounded-md">            
-                  <Link href={"/stock/ProductoNuevo"}>+ Nueva Apertura</Link>
-              </button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                  <Link href={"/stock/ServicioNuevo"}>+ Nuevo Egreso</Link>
-              </button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                  <Link href={"/stock/ServicioNuevo"}>+ Nuevo Ingreso</Link>
-              </button>
+              <Link href={"/stock/ProductoNuevo"}>
+                <button className="bg-green-500 text-white px-4 py-2 rounded-md">            
+                + Nueva Apertura</button>
+              </Link>
+              <Link href={"/stock/ServicioNuevo"}>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                + Nuevo Egreso</button>
+              </Link>
+              <Link href={"/stock/ServicioNuevo"}>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                + Nuevo Ingreso</button>
+              </Link>
             </div>
             <div className='grid grid-cols-4 gap-4 my-4 items-center'>
               <div className="col-start-1 col-span-4 bg-gray-300 h-0.5 my-1"></div>
@@ -192,10 +195,12 @@ export default function Caja() {
                               <button className="bg-blue-500 text-white px-2 py-1 rounded">
                                 <FileText className="w-5 h-5" />
                               </button>
-                              <Link href={"/ProductoNuevo"}>
+                              <Link href={"/"}>
                                 <button className="bg-yellow-500 text-white px-2 py-1 rounded">✏️</button>
                               </Link>
-                              <button className="bg-red-500 text-white px-2 py-1 rounded">❌</button>
+                              <Link href={"/caja/cierre"}>
+                                <button className="bg-red-500 text-white px-2 py-1 rounded">❌</button>
+                              </Link>
                             </div>
                           </TableCell>
                         ) : (

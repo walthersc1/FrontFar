@@ -17,7 +17,7 @@ export default function Menu() {
     { text: "Productos", number: 883, icon: <Blocks className="w-12 h-12 text-white" />, referencia:"/stock"},
     { text: "Compras", number: 0, icon: <Boxes className="w-12 h-12 text-white" />, referencia:"/"},
     { text: "Ventas", number: 27,icon: <FileText className="w-12 h-12 text-white" />, referencia:"/ventas"},
-    { text: "Transferencias y Salidas", number: 0, icon: <ArrowRightLeft className="w-12 h-12 text-white" />, referencia:"/"},
+    { text: "Transferencias y Salidas", number: 0, icon: <ArrowRightLeft className="w-12 h-12 text-white" />, referencia:"/transferenciaSalida"},
     { text: "Entradas", number: 0, icon: <ArrowLeftToLine className="w-12 h-12 text-white" />, referencia:"/"},
   ];
 
