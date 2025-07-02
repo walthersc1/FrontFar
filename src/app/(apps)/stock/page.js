@@ -18,7 +18,7 @@ export default function ProductosYServicios() {
         <div className="flex gap-4 mb-4">
           <button className="bg-green-500 text-white px-4 py-2 rounded-md">
             
-            <Link href={"/stock/ProductoNuevo"}>+ Agregar Productos</Link>
+            <Link href={"/stock/Producto"}>+ Agregar Productos</Link>
           </button>
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
             <Link href={"/stock/ServicioNuevo"}>+ Agregar Servicios</Link>

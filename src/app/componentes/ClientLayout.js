@@ -5,6 +5,9 @@ import { usePathname } from 'next/navigation';
 import Header from './header';
 import SideNav from "./sidebar";
 import { Providers } from "../providers";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 export default function ClientLayout({ children }) {
   const pathname = usePathname();
@@ -12,7 +15,8 @@ export default function ClientLayout({ children }) {
 
   return (
     <Providers>
-      {!isLoginPage && <Header />}
+      <QueryClientProvider client={queryClient}>      
+        {!isLoginPage && <Header />}
       <main className="flex">
         {!isLoginPage && <SideNav />}
         <div className="w-full overflow-x-auto bg-gray-200">
@@ -23,6 +27,8 @@ export default function ClientLayout({ children }) {
           </div>
         </div>
       </main>
+      </QueryClientProvider>
+
     </Providers>
   );
 }
